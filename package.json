@@ -1,0 +1,19 @@
+{
+  "name": "aws-node-express-dynamodb-api",
+  "version": "1.0.0",
+  "description": "",
+  "dependencies": {
+    "@serverless/utils": "^6.7.0",
+    "aws-sdk": "^2.1179.0",
+    "axios": "^0.27.2",
+    "dotenv": "^16.0.1",
+    "ergo-lib-wasm-nodejs": "^0.18.0",
+    "express": "^4.17.1",
+    "serverless-http": "^2.7.0"
+  },
+  "devDependencies": {
+    "serverless-dynamodb-local": "0.2.35",
+    "serverless-ngrok-tunnel": "^0.1.0",
+    "serverless-offline": "^9.0.0"
+  }
+}

@@ -1,0 +1,66 @@
+org: zkastn
+app: aws-node-express-dynamodb-api
+service: aws-node-express-dynamodb-api
+frameworkVersion: '3'
+
+custom:
+  tableName: 'raffles-table-${sls:stage}'
+  dynamodb:
+    start:
+      migrate: true
+    stages:
+      - dev          
+
+provider:
+  name: aws
+  runtime: nodejs14.x
+  timeout: 10
+  iam:
+    role:
+      statements:
+        - Effect: Allow
+          Action:
+            - dynamodb:Query
+            - dynamodb:Scan
+            - dynamodb:GetItem
+            - dynamodb:PutItem
+            - dynamodb:UpdateItem
+            - dynamodb:DeleteItem
+          Resource:
+            - Fn::GetAtt: [ RafflesTable, Arn ]
+  environment:
+    RAFFLES_TABLE: ${self:custom.tableName}
+    BOT_TOKEN: ${file(./config/envVars.js):getEnvVars.botToken}
+    KACHING_SECRET: ${file(./config/envVars.js):getEnvVars.kachingSecret}
+    FAILED_RAFFLE_TREE: ${file(./config/envVars.js):getEnvVars.failedRaffleTree}
+    PASSED_RAFFLE_TREE: ${file(./config/envVars.js):getEnvVars.passedRaffleTree}
+    RAFFLE_CONTRACT_TREE: ${file(./config/envVars.js):getEnvVars.raffleContractTree}
+    RAFFLE_TOKEN_V1: ${file(./config/envVars.js):getEnvVars.raffleTokenV1}
+    DEFAULT_RAFFLE_IMAGE: ${file(./config/envVars.js):getEnvVars.defaultRaffleImage}
+    CHAT_ID: ${file(./config/envVars.js):getEnvVars.chatId}
+
+
+functions:
+  api:
+    handler: handler.handler
+    events:
+      - httpApi: '*'
+
+resources:
+  Resources:
+    RafflesTable:
+      Type: AWS::DynamoDB::Table
+      Properties:
+        AttributeDefinitions:
+          - AttributeName: raffleId
+            AttributeType: S
+        KeySchema:
+          - AttributeName: raffleId
+            KeyType: HASH
+        BillingMode: PAY_PER_REQUEST
+        TableName: ${self:custom.tableName}
+
+plugins:
+  - serverless-offline
+  - serverless-dynamodb-local
+  
