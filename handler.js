@@ -113,7 +113,7 @@ app.post('/kaching/:secret', async (req, res) => {
             var percentFunded = ((soldTickets*price)/ goal) * 100 //Math.round(((soldTickets/goal)*100 + Number.EPSILON) * 100) / 100;
             if(percentFunded<30){
               if(!firstSaleEvent){
-                tg_bot_options.data.caption = `🚨 *FIRST SALE* 🚨 \n\n*Raffle:* ${name}\n*link:* [https://ergoraffle.com/raffle/show/${raffleId.slice(0,4)}...${raffleId.slice(-3,raffleId.length)}](https://ergoraffle.com/raffle/show/${raffleId}) \n*Tickets sold:* ${soldTickets}\n*Goal:* ${goal} ERG (${goal/price} Tickets)\n*Time Remaining:* ${timeRemaining} blocks   \n\n(automated with ${"*@kaching\_ergo\_bot*"})`
+                tg_bot_options.data.caption = `🚨 *FIRST SALE* 🚨 \n\n*Raffle:* ${name}\n*Link:* [https://ergoraffle.com/raffle/show/${raffleId.slice(0,4)}...${raffleId.slice(-3,raffleId.length)}](https://ergoraffle.com/raffle/show/${raffleId}) \n*Tickets sold:* ${soldTickets}\n*Goal:* ${goal} ERG (${goal/price} Tickets)\n*Time Remaining:* ${timeRemaining} blocks   \n\n(automated with ${"*@kaching\_ergo\_bot*"})`
                 try {
                   let res = await axios.request(tg_bot_options);
                   console.log(res)
@@ -144,7 +144,7 @@ app.post('/kaching/:secret', async (req, res) => {
               //ALERT: +30% TICKETS ARE SOLD
               
               if(!thirtyPercentEvent){
-                tg_bot_options.data.caption = `👀 *JUST PASSED 30% FUNDING!* 👀   \n\n*Raffle:* ${name}  \n*link:* [https://ergoraffle.com/raffle/show/${raffleId.slice(0,4)}...${raffleId.slice(-3,raffleId.length)}](https://ergoraffle.com/raffle/show/${raffleId})   \n*Tickets sold:* ${soldTickets}   \n*Goal:* ${goal} ERG (${goal/price} Tickets)   \n*Time Remaining:* ${timeRemaining} blocks   \n\n(automated with ${"*@kaching\_ergo\_bot*"})`
+                tg_bot_options.data.caption = `👀 *JUST PASSED 30% FUNDING!* 👀   \n\n*Raffle:* ${name}  \n*Link:* [https://ergoraffle.com/raffle/show/${raffleId.slice(0,4)}...${raffleId.slice(-3,raffleId.length)}](https://ergoraffle.com/raffle/show/${raffleId})   \n*Tickets sold:* ${soldTickets}   \n*Goal:* ${goal} ERG (${goal/price} Tickets)   \n*Time Remaining:* ${timeRemaining} blocks   \n\n(automated with ${"*@kaching\_ergo\_bot*"})`
                 try {
                   let res = await axios.request(tg_bot_options);
                 } catch (error) {
@@ -171,7 +171,7 @@ app.post('/kaching/:secret', async (req, res) => {
               }
             } else if (percentFunded >= 50.0 && percentFunded < 90.0) {
               if(!fiftyPercentEvent){
-                tg_bot_options.data.caption = `👀 *JUST PASSED 50% FUNDING!* 👀    \n\n*Raffle:* ${name}   \n*link:* [https://ergoraffle.com/raffle/show/${raffleId.slice(0,4)}...${raffleId.slice(-3,raffleId.length)}](https://ergoraffle.com/raffle/show/${raffleId})   \n*Tickets sold:* ${soldTickets}   \n*Goal:* ${goal} ERG (${goal/price} Tickets)   \n*Time Remaining:* ${timeRemaining} blocks   \n\n(automated with ${"*@kaching\_ergo\_bot*"})`
+                tg_bot_options.data.caption = `👀 *JUST PASSED 50% FUNDING!* 👀    \n\n*Raffle:* ${name}   \n*Link:* [https://ergoraffle.com/raffle/show/${raffleId.slice(0,4)}...${raffleId.slice(-3,raffleId.length)}](https://ergoraffle.com/raffle/show/${raffleId})   \n*Tickets sold:* ${soldTickets}   \n*Goal:* ${goal} ERG (${goal/price} Tickets)   \n*Time Remaining:* ${timeRemaining} blocks   \n\n(automated with ${"*@kaching\_ergo\_bot*"})`
                 try {
                   let res = await axios.request(tg_bot_options);
                 } catch (error) {
@@ -199,7 +199,7 @@ app.post('/kaching/:secret', async (req, res) => {
               
             } else if (percentFunded >= 90.0 && percentFunded < 100.0) {
               if(!ninetyPercentEvent){
-                tg_bot_options.data.caption = `👀*JUST PASSED 90% FUNDING!*👀  \n\n*Raffle:* ${name}   \n*link:* [https://ergoraffle.com/raffle/show/${raffleId.slice(0,4)}...${raffleId.slice(-3,raffleId.length)}](https://ergoraffle.com/raffle/show/${raffleId})   \n*Tickets sold:* ${soldTickets}   \n*Goal:* ${goal} ERG (${goal/price} Tickets)   \n*Time Remaining:* ${timeRemaining} blocks   \n\n(automated with ${"*@kaching\_ergo\_bot*"})`
+                tg_bot_options.data.caption = `👀*JUST PASSED 90% FUNDING!*👀  \n\n*Raffle:* ${name}   \n*Link:* [https://ergoraffle.com/raffle/show/${raffleId.slice(0,4)}...${raffleId.slice(-3,raffleId.length)}](https://ergoraffle.com/raffle/show/${raffleId})   \n*Tickets sold:* ${soldTickets}   \n*Goal:* ${goal} ERG (${goal/price} Tickets)   \n*Time Remaining:* ${timeRemaining} blocks   \n\n(automated with ${"*@kaching\_ergo\_bot*"})`
                 try {
                   let res = await axios.request(tg_bot_options);
                 } catch (error) {
@@ -227,7 +227,7 @@ app.post('/kaching/:secret', async (req, res) => {
             } else if (percentFunded >= 100.0) {
                 //ALERT: RAFFLE IS FUNDED!
                 if(!fundedEvent){
-                  tg_bot_options.data.caption = `🎉🎉*JUST PASSED 100% FUNDING!*🎉🎉   \n\n*Raffle:* ${name}   \n*link:* [https://ergoraffle.com/raffle/show/${raffleId.slice(0,4)}...${raffleId.slice(-3,raffleId.length)}](https://ergoraffle.com/raffle/show/${raffleId})   \n*Tickets sold:* ${soldTickets}   \n*Goal:* ${goal} ERG (${goal/price} Tickets)   \n*Time Remaining:* ${timeRemaining} blocks   \n\n(automated with ${"*@kaching\_ergo\_bot*"})`
+                  tg_bot_options.data.caption = `🎉🎉*JUST PASSED 100% FUNDING!*🎉🎉   \n\n*Raffle:* ${name}   \n*Link:* [https://ergoraffle.com/raffle/show/${raffleId.slice(0,4)}...${raffleId.slice(-3,raffleId.length)}](https://ergoraffle.com/raffle/show/${raffleId})   \n*Tickets sold:* ${soldTickets}   \n*Goal:* ${goal} ERG (${goal/price} Tickets)   \n*Time Remaining:* ${timeRemaining} blocks   \n\n(automated with ${"*@kaching\_ergo\_bot*"})`
                   try {
                     let res = await axios.request(tg_bot_options);
                   } catch (error) {
@@ -351,7 +351,7 @@ app.post('/kaching/:secret', async (req, res) => {
             }
             if(successfulRaffle){
               var message = `WINNER:${successfulRaffle.address} of raffle ${raffleId}`
-              tg_bot_options.data.caption = `💸 *A FULLY FUNDED RAFFLE HAS ENDED* 💸 \n\n*Raffle:* ${name}  \nlink: [https://ergoraffle.com/raffle/show/${raffleId.slice(0,4)}...${raffleId.slice(-3,raffleId.length)}](https://ergoraffle.com/raffle/show/${raffleId})   \n*Tickets sold:* ${soldTickets} \n*Goal:* ${goal} ERG (${goal/price} Tickets)  \n*Winner:* ${successfulRaffle.address} \n*Link:* ${successfulRaffle.link}  \n\n(automated with ${"*@kaching\_ergo\_bot*"})`
+              tg_bot_options.data.caption = `💸 *A FULLY FUNDED RAFFLE HAS ENDED* 💸 \n\n*Raffle:* ${name}  \n*Link:* [https://ergoraffle.com/raffle/show/${raffleId.slice(0,4)}...${raffleId.slice(-3,raffleId.length)}](https://ergoraffle.com/raffle/show/${raffleId})   \n*Tickets sold:* ${soldTickets} \n*Goal:* ${goal} ERG (${goal/price} Tickets)  \n*Winner:* ${successfulRaffle.address} \n*Payment:* ${successfulRaffle.link}  \n\n(automated with ${"*@kaching\_ergo\_bot*"})`
               try {
                 let res = await axios.request(tg_bot_options);
               } catch (error) {
@@ -360,7 +360,7 @@ app.post('/kaching/:secret', async (req, res) => {
               console.log(successfulRaffle.link);
             }
             else{
-              tg_bot_options.data.caption = `🚨 *A RAFFLE HAS FAILED* 🚨  \n\n*Raffle:* ${name}  \nlink: [https://ergoraffle.com/raffle/show/${raffleId.slice(0,4)}...${raffleId.slice(-3,raffleId.length)}](https://ergoraffle.com/raffle/show/${raffleId})   \n*Tickets sold:* ${soldTickets} \n*Goal:* ${goal} ERG (${goal/price} Tickets)  \n*Participants are being refunded!*  \n\n(automated with ${"*@kaching\_ergo\_bot*"})`
+              tg_bot_options.data.caption = `🚨 *A RAFFLE HAS FAILED* 🚨  \n\n*Raffle:* ${name}  \n*Link:* [https://ergoraffle.com/raffle/show/${raffleId.slice(0,4)}...${raffleId.slice(-3,raffleId.length)}](https://ergoraffle.com/raffle/show/${raffleId})   \n*Tickets sold:* ${soldTickets} \n*Goal:* ${goal} ERG (${goal/price} Tickets)  \n*Participants are being refunded!*  \n\n(automated with ${"*@kaching\_ergo\_bot*"})`
               try {
                 let res = await axios.request(tg_bot_options);
               } catch (error) {
