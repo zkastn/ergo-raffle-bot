@@ -23,7 +23,8 @@ In the case of a successful raffle; the winner is announced.
 ## Roadmap
 
 - Learn to write better js code
-- Add time-based notification event
+- Add time-based notification event 
+- Convert "blocks remaining" to "`TIME`" [Useful code found here](https://github.com/ErgoRaffle/raffle-frontend/blob/master/src/components/Day.js)
 
 
 ## License
