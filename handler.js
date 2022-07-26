@@ -55,7 +55,7 @@ app.post('/kaching/:secret', async (req, res) => {
         try {
           var result = await axios.get(`https://api.ergoraffle.com/api/raffle/${raffleId}`);
           name = result.data.name;
-          picture = result.data.image
+          picture = result.data.picture[0]
         } catch (error) {
           console.log(error);
         }
@@ -270,7 +270,7 @@ app.post('/kaching/:secret', async (req, res) => {
         try {
           var result = await axios.get(`https://api.ergoraffle.com/api/raffle/${raffleId}`);
           name = result.data.name;
-          picture = result.data.image
+          picture = result.data.picture[0];
         } catch (error) {
           console.log(error);
         }
