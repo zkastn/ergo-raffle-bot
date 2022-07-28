@@ -308,7 +308,7 @@ app.post('/kaching/:secret', async (req, res) => {
         keys.forEach((key, i) => raffleStats[key] = parseInt(values[i]));
         var goal = raffleStats.goal / NANO_ERGS;
         var price = raffleStats.price /NANO_ERGS;
-        var soldTickets = TOTAL_TOKENS- raffleToken.amount;
+        var soldTickets = TOTAL_TOKENS - raffleToken.amount;
         var percentFunded = ((soldTickets*price)/ goal) * 100
         try {
           const dbParams = {
@@ -400,7 +400,8 @@ app.post('/kaching/:secret', async (req, res) => {
               }
               console.log(successfulRaffle.link);
             }
-            else{
+            else if(percentFunded>0 && percentFunded<100)
+            {
               tg_bot_options.data.caption = `🚨 *A RAFFLE HAS FAILED* 🚨  \n\n*Raffle:* ${name}  \n*Link:* [https://ergoraffle.com/raffle/show/${short_id(raffleId)}](https://ergoraffle.com/raffle/show/${raffleId})   \n*Tickets sold:* ${soldTickets} \n*Goal:* ${goal} ERG (${goal/price} Tickets)  \n*Participants are being refunded!*  \n\n(automated with ${"*@kaching\_ergo\_bot*"})`
               try {
                 let res = await axios.request(tg_bot_options);
